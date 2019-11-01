@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>
+      <label>
+        <input type="checkbox" ng-click="vm.toggleAll()" /> ID
+      </label>
+      <sort type="id" notes="vm.notes"></sort>
+    </th>
+    <th>Title <sort type="title" notes="vm.notes"></sort></th>
+    <th>Content <sort type="content" notes="vm.notes"></sort></th>
+    <th>Status <sort type="status" notes="vm.notes"></sort></th>
+  </tr>
+  <tr ng-repeat="note in vm.notes">
+    <td>
+      <label>
+        <input type="checkbox" ng-click="vm.selectRow(note)" ng-model="note.selected" /> {{ note.id }}
+      </label>
+    </td>
+    <td>{{ note.title }}</td>
+    <td>{{ note.content }}</td>
+    <td>{{ note.status }}</td>
+  </tr>
+</table>
+<button ng-click="vm.add()" class="pull-right">Add</button>

@@ -1,0 +1,67 @@
+body {
+  background: #f7f7f7;
+  color: #949494;
+  font-family: arial, sans-serif;
+  font-size: .9em;
+  margin: .5cm 1.5cm; }
+
+button {
+  background: #006699;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 2px;
+  border: 0; }
+
+.pull-right {
+  float: right; }
+
+statistics {
+  width: 50vw;
+  display: flex;
+  height: 100px;
+  align-items: center;
+  background: #fff;
+  justify-content: space-around;
+  box-shadow: 3px 3px 10px -5px #c4c4c4; }
+  statistics div label {
+    display: inline-block;
+    width: 100%;
+    color: #b2b2b2; }
+  statistics div span {
+    color: #b2b2b2;
+    font-size: 2em; }
+
+notes {
+  display: block;
+  margin-top: .5cm;
+  width: 80vw; }
+  notes table {
+    margin-bottom: .3cm;
+    width: 100%;
+    font-size: .9em;
+    border-collapse: collapse; }
+    notes table [type="checkbox"] {
+      vertical-align: bottom;
+      position: relative;
+      top: 2px; }
+    notes table th {
+      background: #989898;
+      color: #e2e2e2;
+      border-right: 1px solid #e2e2e2;
+      font-weight: normal;
+      text-align: left; }
+      notes table th:last-of-type {
+        border-right: 0; }
+    notes table td {
+      border-bottom: 1px solid #e2e2e2;
+      background: #fff; }
+      notes table td:first-of-type {
+        color: #006699; }
+    notes table th, notes table td {
+      padding: 5px 5px 5px 10px; }
+      notes table th:first-of-type, notes table td:first-of-type {
+        padding-top: 3px; }
+  notes button {
+    padding: 10px 80px; }
+
+/*# sourceMappingURL=style.css.map */
