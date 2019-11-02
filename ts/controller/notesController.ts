@@ -14,7 +14,7 @@ module Controller {
     }
 
     angular
-        .module('controller', ['model'])
+        .module('controller', ['model', 'component'])
         .controller('NotesController', NotesController);
 }
 

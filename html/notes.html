@@ -22,3 +22,14 @@
   </tr>
 </table>
 <button ng-click="vm.add()" class="pull-right">Add</button>
+
+<div class="newNote" ng-if="vm.newNote">
+  <div class="shadow">
+    <h3>News</h3>
+    <input ng-model="vm.newNote.title" placeholder="Add title" autofocus />
+    <textarea ng-model="vm.newNote.content" placeholder="Add content"></textarea>
+
+    <button ng-click="vm.save(vm.newNote)" ng-disabled="!vm.canSave()">Save</button>
+    <button ng-click="vm.cancel()" class="secondary">Cancel</button>
+  </div>
+</div>

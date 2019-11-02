@@ -4,7 +4,21 @@ var NoteModel;
         function Note($q, $timeout) {
             this.$q = $q;
             this.$timeout = $timeout;
+            this.index = 3;
         }
+        Note.prototype.saveNote = function (note) {
+            note.id = ++this.index;
+            var deferred = this.$q.defer();
+            this.$timeout(function () { return deferred.resolve(note); }, 2);
+            return deferred.promise;
+        };
+        Note.prototype.newNote = function () {
+            return {
+                title: '',
+                content: '',
+                status: 'New',
+            };
+        };
         Note.prototype.getList = function () {
             var list = [
                 {
@@ -27,14 +41,14 @@ var NoteModel;
                 }
             ];
             var deferred = this.$q.defer();
-            this.$timeout(function () { return deferred.resolve(list); }, 2000);
+            this.$timeout(function () { return deferred.resolve(list); }, 2);
             return deferred.promise;
         };
         return Note;
     }());
     NoteModel.Note = Note;
     angular
-        .module('model', [])
+        .module('model')
         .service('Note', Note);
 })(NoteModel || (NoteModel = {}));
 //# sourceMappingURL=note.js.map

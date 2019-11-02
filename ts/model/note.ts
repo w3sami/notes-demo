@@ -5,7 +5,7 @@ module NoteModel {
   import ITimeoutService = angular.ITimeoutService;
 
   export interface INote {
-    id: number;
+    id?: number;
     title: string;
     content: string;
     status : string;
@@ -15,8 +15,26 @@ module NoteModel {
   export class Note {
 
     constructor(private $q: IQService, private $timeout: ITimeoutService) {}
+    private index = 3;
 
-    public getList() { /* : IPromise<INote[]> */
+    public saveNote(note: INote): IPromise<INote> {
+      note.id = ++this.index;
+
+      const deferred = this.$q.defer();
+      this.$timeout(() => deferred.resolve(note), 2);
+
+      return deferred.promise as IPromise<INote>;
+    }
+
+    public newNote(): INote {
+      return {
+        title: '',
+        content: '',
+        status : 'New',
+      }
+    }
+
+    public getList(): IPromise<INote[]> {
       const list: INote[] = [
         {
           "id": 1,
@@ -39,13 +57,13 @@ module NoteModel {
       ];
 
       const deferred = this.$q.defer();
-      this.$timeout(() => deferred.resolve(list), 2000);
+      this.$timeout(() => deferred.resolve(list), 2);
 
-      return deferred.promise;
+      return deferred.promise as IPromise<INote[]>;
     }
   }
 
   angular
-    .module('model', [])
+    .module('model')
     .service('Note', Note);
 }

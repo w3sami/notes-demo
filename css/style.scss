@@ -14,6 +14,7 @@ $headerBg: #989898;
 $headerText: #e2e2e2;
 
 $title: #1a1a1a;
+$inputBorder: #e2e2e2;
 
 body {
   background: $bodyBg;
@@ -28,6 +29,9 @@ button {
   padding: 10px 30px;
   border-radius: 2px;
   border: 0;
+}
+[ng-click] {
+  cursor: pointer;
 }
 
 .pull-right {
@@ -94,5 +98,37 @@ notes {
   }
   button {
     padding: 10px 80px;
+  }
+  .newNote {
+    width: 40vw;
+    margin-top: 2cm;
+    background: $boxBg;
+    box-shadow: 10px 10px 15px -10px $shadow;
+    .shadow{
+      box-shadow: -10px -10px 10px -10px $shadow;
+      padding: .5cm;
+    }
+    h3 {
+      color: $title;
+      font-weight: normal;
+      margin-top: 0;
+    }
+    input, textarea {
+      box-sizing: border-box;
+      width: 100%;
+      margin-bottom: .3cm;
+      border: 1px solid $inputBorder;
+      padding: 10px;
+    }
+    textarea {
+      min-height: 100px;
+    }
+    button {
+      padding: 10px 30px;
+      &.secondary {
+        background: $boxBg;
+        color: $primary;
+      }
+    }
   }
 }

@@ -10,7 +10,7 @@ var Controller;
         return NotesController;
     }());
     angular
-        .module('controller', ['model'])
+        .module('controller', ['model', 'component'])
         .controller('NotesController', NotesController);
 })(Controller || (Controller = {}));
 //# sourceMappingURL=notesController.js.map

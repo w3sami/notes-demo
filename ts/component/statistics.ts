@@ -10,13 +10,11 @@ module Component {
         public completed: number;
         public notCompleted: number;
 
-        $onInit() {
-            console.log('uzx');
-            console.log(this.notes);
-            this.total = this.notes.length;
+        public $onChanges(changes) {
+            this.total = changes.notes.currentValue.length;
             this.completed = 0;
             this.notCompleted = 0;
-            this.notes.map(note => {
+            angular.forEach(changes.notes.currentValue, note => {
                 this.completed += note.status === 'Completed' ? 1 : 0;
                 this.notCompleted += note.status === 'Not completed' ? 1 : 0;
             });
@@ -33,6 +31,6 @@ module Component {
     };
 
     angular
-        .module('component', ['model'])
+        .module('component')
         .component('statistics', StatisticsControllerConfig);
 }

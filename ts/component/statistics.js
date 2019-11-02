@@ -3,14 +3,12 @@ var Component;
     var StatisticsController = /** @class */ (function () {
         function StatisticsController() {
         }
-        StatisticsController.prototype.$onInit = function () {
+        StatisticsController.prototype.$onChanges = function (changes) {
             var _this = this;
-            console.log('uzx');
-            console.log(this.notes);
-            this.total = this.notes.length;
+            this.total = changes.notes.currentValue.length;
             this.completed = 0;
             this.notCompleted = 0;
-            this.notes.map(function (note) {
+            angular.forEach(changes.notes.currentValue, function (note) {
                 _this.completed += note.status === 'Completed' ? 1 : 0;
                 _this.notCompleted += note.status === 'Not completed' ? 1 : 0;
             });
@@ -26,7 +24,7 @@ var Component;
         }
     };
     angular
-        .module('component', ['model'])
+        .module('component')
         .component('statistics', StatisticsControllerConfig);
 })(Component || (Component = {}));
 //# sourceMappingURL=statistics.js.map

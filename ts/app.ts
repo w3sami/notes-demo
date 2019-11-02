@@ -1,3 +1,6 @@
 module Notes {
-  const notes = angular.module('notes', ['component', 'controller']);
+  angular.module('component', []);
+  angular.module('model', []);
+  angular.module('directive', []);
+  angular.module('notes', ['controller']);
 }

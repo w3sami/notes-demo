@@ -12,6 +12,9 @@ button {
   border-radius: 2px;
   border: 0; }
 
+[ng-click] {
+  cursor: pointer; }
+
 .pull-right {
   float: right; }
 
@@ -63,5 +66,30 @@ notes {
         padding-top: 3px; }
   notes button {
     padding: 10px 80px; }
+  notes .newNote {
+    width: 40vw;
+    margin-top: 2cm;
+    background: #fff;
+    box-shadow: 10px 10px 15px -10px #c4c4c4; }
+    notes .newNote .shadow {
+      box-shadow: -10px -10px 10px -10px #c4c4c4;
+      padding: .5cm; }
+    notes .newNote h3 {
+      color: #1a1a1a;
+      font-weight: normal;
+      margin-top: 0; }
+    notes .newNote input, notes .newNote textarea {
+      box-sizing: border-box;
+      width: 100%;
+      margin-bottom: .3cm;
+      border: 1px solid #e2e2e2;
+      padding: 10px; }
+    notes .newNote textarea {
+      min-height: 100px; }
+    notes .newNote button {
+      padding: 10px 30px; }
+      notes .newNote button.secondary {
+        background: #fff;
+        color: #006699; }
 
 /*# sourceMappingURL=style.css.map */
