@@ -20,8 +20,8 @@ var Component;
         controllerAs: 'vm',
         templateUrl: '/html/statistics.html',
         bindings: {
-            'notes': '<'
-        }
+            notes: '<',
+        },
     };
     angular
         .module('component')

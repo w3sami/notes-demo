@@ -13,32 +13,34 @@ var NoteModel;
             return deferred.promise;
         };
         Note.prototype.newNote = function () {
+            var statuses = ['New', 'Completed', 'Not completed'];
             return {
                 title: '',
                 content: '',
-                status: 'New',
+                // status: 'new'
+                status: statuses[Math.floor(Math.random() * statuses.length)],
             };
         };
         Note.prototype.getList = function () {
             var list = [
                 {
-                    "id": 1,
-                    "title": "delectus aut autem",
-                    "content": "Lorem ipsum",
-                    "status": "New"
+                    id: 1,
+                    title: 'delectus aut autem',
+                    content: 'Lorem ipsum',
+                    status: 'New',
                 },
                 {
-                    "id": 2,
-                    "title": "quis ut nam facilis et officia qui",
-                    "content": "Lorem ipsum",
-                    "status": "Completed"
+                    id: 2,
+                    title: 'quis ut nam facilis et officia qui',
+                    content: 'Lorem ipsum',
+                    status: 'Completed',
                 },
                 {
-                    "id": 3,
-                    "title": "fugiat veniam minus",
-                    "content": "Lorem ipsum",
-                    "status": "Not completed"
-                }
+                    id: 3,
+                    title: 'fugiat veniam minus',
+                    content: 'Lorem ipsum',
+                    status: 'Not completed',
+                },
             ];
             var deferred = this.$q.defer();
             this.$timeout(function () { return deferred.resolve(list); }, 2);
@@ -47,8 +49,6 @@ var NoteModel;
         return Note;
     }());
     NoteModel.Note = Note;
-    angular
-        .module('model')
-        .service('Note', Note);
+    angular.module('model').service('Note', Note);
 })(NoteModel || (NoteModel = {}));
 //# sourceMappingURL=note.js.map

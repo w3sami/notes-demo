@@ -1,5 +1,4 @@
-module NoteModel {
-
+namespace NoteModel {
   import IQService = angular.IQService;
   import IPromise = angular.IPromise;
   import ITimeoutService = angular.ITimeoutService;
@@ -8,12 +7,11 @@ module NoteModel {
     id?: number;
     title: string;
     content: string;
-    status : string;
+    status: string;
     selected?: boolean;
   }
 
   export class Note {
-
     constructor(private $q: IQService, private $timeout: ITimeoutService) {}
     private index = 3;
 
@@ -27,33 +25,35 @@ module NoteModel {
     }
 
     public newNote(): INote {
+      const statuses = ['New', 'Completed', 'Not completed'];
       return {
         title: '',
         content: '',
-        status : 'New',
-      }
+        // status: 'new'
+        status: statuses[Math.floor(Math.random() * statuses.length)], // random to demo the counter feature
+      };
     }
 
     public getList(): IPromise<INote[]> {
       const list: INote[] = [
         {
-          "id": 1,
-          "title": "delectus aut autem",
-          "content": "Lorem ipsum",
-          "status": "New"
+          id: 1,
+          title: 'delectus aut autem',
+          content: 'Lorem ipsum',
+          status: 'New',
         },
         {
-          "id": 2,
-          "title": "quis ut nam facilis et officia qui",
-          "content": "Lorem ipsum",
-          "status": "Completed"
+          id: 2,
+          title: 'quis ut nam facilis et officia qui',
+          content: 'Lorem ipsum',
+          status: 'Completed',
         },
         {
-          "id": 3,
-          "title": "fugiat veniam minus",
-          "content": "Lorem ipsum",
-          "status": "Not completed"
-        }
+          id: 3,
+          title: 'fugiat veniam minus',
+          content: 'Lorem ipsum',
+          status: 'Not completed',
+        },
       ];
 
       const deferred = this.$q.defer();
@@ -63,7 +63,5 @@ module NoteModel {
     }
   }
 
-  angular
-    .module('model')
-    .service('Note', Note);
+  angular.module('model').service('Note', Note);
 }

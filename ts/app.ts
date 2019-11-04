@@ -1,4 +1,4 @@
-module Notes {
+namespace Notes {
   angular.module('component', []);
   angular.module('model', []);
   angular.module('directive', []);
