@@ -43,7 +43,7 @@ var NoteModel;
                 },
             ];
             var deferred = this.$q.defer();
-            this.$timeout(function () { return deferred.resolve(list); }, 2);
+            this.$timeout(function () { return deferred.resolve(list); }, 2000);
             return deferred.promise;
         };
         return Note;

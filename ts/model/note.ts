@@ -57,7 +57,7 @@ namespace NoteModel {
       ];
 
       const deferred = this.$q.defer();
-      this.$timeout(() => deferred.resolve(list), 2);
+      this.$timeout(() => deferred.resolve(list), 2000);
 
       return deferred.promise as IPromise<INote[]>;
     }
