@@ -18,7 +18,7 @@ var Component;
     var StatisticsControllerConfig = {
         controller: StatisticsController,
         controllerAs: 'vm',
-        templateUrl: '/html/statistics.html',
+        templateUrl: 'html/statistics.html',
         bindings: {
             notes: '<',
         },

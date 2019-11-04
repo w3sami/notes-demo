@@ -59,7 +59,7 @@ var Component;
     var NotesComponentConfig = {
         controller: NotesComponent,
         controllerAs: 'vm',
-        templateUrl: '/html/notes.html?ddd',
+        templateUrl: 'html/notes.html',
         bindings: {
             notes: '=',
         },

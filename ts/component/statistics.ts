@@ -22,7 +22,7 @@ namespace Component {
   const StatisticsControllerConfig: IComponentOptions = {
     controller: StatisticsController,
     controllerAs: 'vm',
-    templateUrl: '/html/statistics.html',
+    templateUrl: 'html/statistics.html',
     bindings: {
       notes: '<',
     },
