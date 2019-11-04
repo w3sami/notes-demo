@@ -1,28 +1,29 @@
-<table>
-  <tr>
-    <th>
-      <label>
-        <input type="checkbox" ng-click="vm.toggleAll()" /> ID
-      </label>
-      <sort type="id" notes="vm.notes"></sort>
-    </th>
-    <th>Title <sort type="title" notes="vm.notes"></sort></th>
-    <th>Content <sort type="content" notes="vm.notes"></sort></th>
-    <th>Status <sort type="status" notes="vm.notes"></sort></th>
-  </tr>
-  <tr ng-repeat="note in vm.notes">
-    <td>
-      <label>
-        <input type="checkbox" ng-click="vm.selectRow(note)" ng-model="note.selected" /> {{ note.id }}
-      </label>
-    </td>
-    <td>{{ note.title }}</td>
-    <td>{{ note.content }}</td>
-    <td>{{ note.status }}</td>
-  </tr>
-</table>
-<button ng-click="vm.add()" class="pull-right">Add</button>
-
+<div class="notes">
+  <table>
+    <tr>
+      <th ng-click="vm.sort('id')">
+        <label>
+          <input type="checkbox" ng-click="vm.toggleAll()" /> ID
+        </label>
+        <sort type="id"></sort>
+      </th>
+      <th ng-click="vm.sort('title')">Title <sort type="title"></sort></th>
+      <th ng-click="vm.sort('content')">Content <sort type="content"></sort></th>
+      <th ng-click="vm.sort('status')">Status <sort type="status"></sort></th>
+    </tr>
+    <tr ng-repeat="note in vm.notes |orderBy:vm.orderBy">
+      <td>
+        <label>
+          <input type="checkbox" ng-click="vm.selectRow(note)" ng-model="note.selected" /> {{ note.id }}
+        </label>
+      </td>
+      <td>{{ note.title }}</td>
+      <td>{{ note.content }}</td>
+      <td>{{ note.status }}</td>
+    </tr>
+  </table>
+  <button ng-click="vm.add()" class="pull-right">Add</button>
+</div>
 <div class="newNote" ng-if="vm.newNote">
   <div class="shadow">
     <h3>News</h3>
@@ -30,6 +31,15 @@
     <textarea ng-model="vm.newNote.content" placeholder="Add content"></textarea>
 
     <button ng-click="vm.save(vm.newNote)" ng-disabled="!vm.canSave()">Save</button>
-    <button ng-click="vm.cancel()" class="secondary">Cancel</button>
+    <button ng-click="vm.cancelSave()" class="secondary">Cancel</button>
+  </div>
+</div>
+
+<div class="remove" ng-if="vm.selectedRow">
+  <img src="img/notice.png" />
+  Do you want to delete this news?
+  <div class="buttons">
+    <button ng-click="vm.remove()" class="pull-right">Yes</button>
+    <button ng-click="vm.cancelRemove()" class="pull-right secondary">No</button>
   </div>
 </div>

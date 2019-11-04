@@ -5,11 +5,13 @@ namespace Component {
   class NotesComponent {
     public notes: INote[];
     public newNote: INote = null;
+    public orderBy = 'id';
+    public selectedRow: INote;
 
     constructor(private Note) {}
 
     public selectRow(note: INote) {
-      console.log(note.selected);
+      this.selectedRow = note.selected ? null : note;
     }
 
     public toggleAll() {}
@@ -22,7 +24,8 @@ namespace Component {
       this.Note.saveNote(note)
         .then((note: INote) => {
           this.notes.push(note);
-          this.cancel();
+          this.notes = angular.copy(this.notes); // trigger $onChanges
+          this.cancelSave();
         })
         .catch(() => alert('error saving'));
     }
@@ -31,17 +34,44 @@ namespace Component {
       return this.newNote.title !== '' || this.newNote.content !== '';
     }
 
-    public cancel() {
+    public cancelSave() {
       this.newNote = null;
+    }
+
+    public remove() {
+      let index,
+        i = 0;
+      angular.forEach(this.notes, note => {
+        if (note.id === this.selectedRow.id) {
+          index = i;
+        }
+        i++;
+      });
+      this.notes.splice(index, 1);
+      this.notes = angular.copy(this.notes); // trigger $onChanges
+      this.selectedRow = null;
+    }
+
+    public cancelRemove() {
+      this.selectedRow.selected = false;
+      this.selectedRow = null;
+    }
+
+    public sort(by: string) {
+      if (this.orderBy === by) {
+        this.orderBy = '-' + by;
+      } else {
+        this.orderBy = by;
+      }
     }
   }
 
   const NotesComponentConfig: IComponentOptions = {
     controller: NotesComponent,
     controllerAs: 'vm',
-    templateUrl: '/html/notes.html?dd',
+    templateUrl: '/html/notes.html?ddd',
     bindings: {
-      notes: '<',
+      notes: '=',
     },
   };
 

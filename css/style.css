@@ -36,8 +36,9 @@ statistics {
 
 notes {
   display: block;
-  margin-top: .5cm;
-  width: 80vw; }
+  margin-top: .5cm; }
+  notes .notes {
+    width: 80vw; }
   notes table {
     margin-bottom: .3cm;
     width: 100%;
@@ -52,9 +53,18 @@ notes {
       color: #e2e2e2;
       border-right: 1px solid #e2e2e2;
       font-weight: normal;
-      text-align: left; }
+      text-align: left;
+      user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none; }
       notes table th:last-of-type {
         border-right: 0; }
+      notes table th sort {
+        float: right;
+        margin-right: 5px;
+        zoom: .8; }
     notes table td {
       border-bottom: 1px solid #e2e2e2;
       background: #fff; }
@@ -91,5 +101,29 @@ notes {
       notes .newNote button.secondary {
         background: #fff;
         color: #006699; }
+  notes .remove {
+    width: 80vw;
+    float: right;
+    clear: both;
+    margin-top: 2cm;
+    background: #f01e1e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 5px; }
+    notes .remove img {
+      margin-right: 10px; }
+    notes .remove .buttons {
+      margin-left: auto; }
+    notes .remove button {
+      border-radius: 6px;
+      padding: 10px 40px;
+      background: #fff;
+      color: #f01e1e;
+      margin-left: 10px; }
+      notes .remove button.secondary {
+        background: #f01e1e;
+        color: #fff;
+        border: 1px solid #fff; }
 
 /*# sourceMappingURL=style.css.map */

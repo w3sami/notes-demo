@@ -7,8 +7,8 @@ $shadow: darken($bodyBg, 20);
 $label: #b2b2b2;
 
 $buttonText: #fff;
-$warningText: #fff;
-$warningBg: #f01e1e;
+$warning1: #f01e1e;
+$warning2: #fff;
 
 $headerBg: #989898;
 $headerText: #e2e2e2;
@@ -61,7 +61,9 @@ statistics {
 notes {
   display: block;
   margin-top: .5cm;
-  width: 80vw;
+  .notes {
+    width: 80vw;
+  }
   table {
     margin-bottom: .3cm;
     width: 100%;
@@ -81,6 +83,18 @@ notes {
       &:last-of-type {
         border-right: 0;
       }
+      sort {
+        float: right;
+        margin-right: 5px;
+        zoom: .8;
+      }
+
+      user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -o-user-select: none;
+
     }
     td {
       border-bottom: 1px solid $headerText;
@@ -128,6 +142,35 @@ notes {
       &.secondary {
         background: $boxBg;
         color: $primary;
+      }
+    }
+  }
+  .remove {
+    width: 80vw;
+    float: right;
+    clear: both;
+    margin-top: 2cm;
+    background: $warning1;
+    color: $warning2;
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 10px;
+    }
+    padding: 5px;
+    .buttons {
+      margin-left: auto;
+    }
+    button {
+      border-radius: 6px;
+      padding: 10px 40px;
+      background: $warning2;
+      color: $warning1;
+      margin-left: 10px;
+      &.secondary {
+        background: $warning1;
+        color: $warning2;
+        border: 1px solid $warning2;
       }
     }
   }

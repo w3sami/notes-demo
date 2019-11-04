@@ -6,9 +6,9 @@ namespace Directive {
   function autofocus($timeout: ITimeoutService): IDirective {
     return {
       restrict: 'A',
-      link: function(scope: IScope, element: any) {
+      link: function(scope: IScope, element: JQLite) {
         $timeout(function() {
-          element.focus();
+          element[0].focus();
         });
       },
     };
