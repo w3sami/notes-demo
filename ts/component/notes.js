@@ -38,6 +38,9 @@ var Component;
                 }
                 i++;
             });
+            if (index === undefined) {
+                return;
+            }
             this.notes.splice(index, 1);
             this.notes = angular.copy(this.notes); // trigger $onChanges
             this.selectedRow = null;
