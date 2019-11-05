@@ -139,6 +139,10 @@ notes {
     }
     button {
       padding: 10px 30px;
+      &:disabled {
+        opacity: .5;
+        cursor: default;
+      }
       &.secondary {
         background: $boxBg;
         color: $primary;
@@ -174,4 +178,5 @@ notes {
       }
     }
   }
+
 }

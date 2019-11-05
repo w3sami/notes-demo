@@ -31,6 +31,7 @@ var Component;
         };
         NotesComponent.prototype.remove = function () {
             var _this = this;
+            // TODO: fake ajax
             var index, i = 0;
             angular.forEach(this.notes, function (note) {
                 if (note.id === _this.selectedRow.id) {

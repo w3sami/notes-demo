@@ -39,6 +39,7 @@ namespace Component {
     }
 
     public remove() {
+      // TODO: fake ajax
       let index,
         i = 0;
       angular.forEach(this.notes, note => {

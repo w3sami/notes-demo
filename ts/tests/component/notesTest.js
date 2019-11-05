@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    describe('component.notes', function () {
+    describe('component.notes.controller', function () {
         beforeEach(module('component'));
 
         var controller,
@@ -143,9 +143,11 @@
 
         var notesComponent,
             $scope,
-            notes;
+            notes,
+            $timeout;
 
-        beforeEach(inject(function ($rootScope, $compile, Note, $timeout) {
+        beforeEach(inject(function ($rootScope, $compile, Note, _$timeout_) {
+            $timeout = _$timeout_;
             $scope = $rootScope;
             Note.getList().then(list => {
                 $scope.notes = notes = list;
@@ -187,5 +189,45 @@
             notesComponent.find('tr').find('th').eq(1).triggerHandler('click');
             expect(notesComponent.find('tr').eq(0).find('th').find('img').attr('src')).toBe('img/sortInactive.png');
         });
+
+        it('should open the new dialog', function () {
+            notesComponent.find('button').triggerHandler('click');
+            expect(angular.element(notesComponent[0].querySelector('.newNote')).length).toBe(1);
+        });
+
+        it('should not save without title or content', function () {
+            notesComponent.find('button').triggerHandler('click');
+            notesComponent.find('input').eq(4).val('').triggerHandler('change');
+            $scope.$digest();
+            expect(notesComponent.find('button').eq(1).prop('disabled')).toBe(true);
+        });
+
+        it('should save a new note', function () {
+            notesComponent.find('button').triggerHandler('click');
+            notesComponent.find('input').eq(4).val('title').triggerHandler('change');
+            notesComponent.find('textarea').val('content').triggerHandler('change');
+            $scope.$digest();
+            expect(notesComponent.find('button').eq(1).prop('disabled')).toBe(false);
+            notesComponent.find('button').eq(1).triggerHandler('click');
+            $timeout.flush();
+            expect(notesComponent.find('textarea').length).toBe(0);
+            expect(notesComponent.find('tr').length).toBe(5);
+            expect(notesComponent.find('tr').eq(4).find('td').eq(0).text().trim()).toBe('4');
+            expect(notesComponent.find('tr').eq(4).find('td').eq(1).text().trim()).toBe('title');
+            expect(notesComponent.find('tr').eq(4).find('td').eq(2).text().trim()).toBe('content');
+        });
+
+        it('should show the remove dialog', function () {
+            notesComponent.find('input').eq(1).triggerHandler('click');
+            expect(angular.element(notesComponent[0].querySelector('.remove')).length).toBe(1);
+        });
+
+        it('should remove a row', function () {
+            notesComponent.find('input').eq(1).triggerHandler('click');
+            notesComponent.find('button').eq(1).triggerHandler('click');
+            $scope.$digest();
+            expect(notesComponent.find('tr').length).toBe(3);
+        });
+
     });
 })();
