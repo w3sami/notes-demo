@@ -3,7 +3,7 @@
     <tr>
       <th ng-click="vm.sort('id')">
         <label>
-          <input type="checkbox" ng-click="vm.toggleAll()" /> ID
+          <input type="checkbox" ng-click="vm.toggleAll()" disabled style="pointer-events: none"/> ID
         </label>
         <sort type="id"></sort>
       </th>
@@ -14,7 +14,11 @@
     <tr ng-repeat="note in vm.notes |orderBy:vm.orderBy">
       <td>
         <label>
-          <input type="checkbox" ng-click="vm.selectRow(note)" ng-model="note.selected" /> {{ note.id }}
+          <input type="checkbox"
+                 ng-click="vm.selectRow(note)"
+                 ng-model="note.selected"
+                 ng-disabled="vm.selectedRow && vm.selectedRow !== note"
+          /> {{ note.id }}
         </label>
       </td>
       <td>{{ note.title }}</td>

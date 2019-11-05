@@ -39,6 +39,7 @@ namespace Component {
     }
 
     public remove() {
+      // TODO: fake ajax
       let index,
         i = 0;
       angular.forEach(this.notes, note => {
@@ -47,6 +48,9 @@ namespace Component {
         }
         i++;
       });
+      if (index === undefined) {
+        return;
+      }
       this.notes.splice(index, 1);
       this.notes = angular.copy(this.notes); // trigger $onChanges
       this.selectedRow = null;

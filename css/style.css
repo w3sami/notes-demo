@@ -98,6 +98,9 @@ notes {
       min-height: 100px; }
     notes .newNote button {
       padding: 10px 30px; }
+      notes .newNote button:disabled {
+        opacity: .5;
+        cursor: default; }
       notes .newNote button.secondary {
         background: #fff;
         color: #006699; }
