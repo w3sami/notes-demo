@@ -7,7 +7,7 @@
   },
   "license": "proprietary",
   "dependencies": {
-    "angular": "^1.7.8"
+    "angular": "^1.8.3"
   },
   "devDependencies": {
     "@types/angular": "^1.6.55",
