@@ -14,7 +14,7 @@
     "angular-mocks": "^1.5.8",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "^4.2.0",
+    "karma": "^6.4.1",
     "karma-chrome-launcher": "~2.2.0",
     "karma-commonjs": "0.0.6",
     "karma-coverage": "^0.2.1",
